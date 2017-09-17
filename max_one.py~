@@ -58,14 +58,21 @@ cross_over=[]
 mut_array=[]
 for i in range(50):
   k=random.randint(0,2**32-1)
-  random_array.append(decToBin(k))
+  n=decToBin(k)
+  q=7-len(n)
+  s=''
+  for i in range(q):
+       s=s+'0'
+  n=s+n
+  random_array.append(n)
   
 #print(fit_sort(random_array))
 random_array = fit_sort(random_array)
 
 maxx=0
 for i in range(30):
-    print("Generation:"+str(i)):
+    print("Generation:"+str(i))
+    print()
     print(random_array)
     if(maxx < cal_fitness(random_array[0])):
        maxx=cal_fitness(random_array[0])
@@ -82,7 +89,7 @@ for i in range(30):
     random_array=mut_array+cross_over+reprod_array  
     random_array=fit_sort(random_array)
     
-print(maxx)
+print("ANS:"+str(maxx))
      
    
 
